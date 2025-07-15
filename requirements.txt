@@ -1,2 +1,8 @@
 agno
+openai
 python-dotenv
+sentence-transformers
+duckduckgo-search
+pypdf
+lancedb
+huggingface-hub
