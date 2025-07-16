@@ -4,6 +4,9 @@ print("✅ Script started...")
 
 import os
 from dotenv import load_dotenv
+# Load your OpenRouter key and base URL from .env
+load_dotenv()
+
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
 from agno.knowledge.pdf import PDFKnowledgeBase
@@ -12,9 +15,6 @@ from agno.tools.duckduckgo import DuckDuckGoTools
 from persona import detect_persona, get_prompt_for
 from sentence_transformers import SentenceTransformer
 
-
-# Load your OpenRouter key and base URL from .env
-load_dotenv()
 
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 os.environ["OPENAI_BASE_URL"] = os.getenv("OPENAI_BASE_URL")
@@ -55,7 +55,7 @@ tools = [DuckDuckGoTools()]
 # Create AGNO agent
 agent = Agent(
     model=llm,
-    knowledge=kb,
+    knowledge=kb,  # ✅ This connects R (retrieval) to G (generation)
     tools=tools,
     search_knowledge=True
 )
@@ -76,11 +76,10 @@ if __name__ == "__main__":
 
         persona = detect_persona(user_input)
         prompt = get_prompt_for(persona)
+
         agent.instructions = prompt
 
         print(f"[Persona: {persona}]")
-
         response = agent.run(user_input)
         print(f"\nAgent: {response.content}\n")
-
 
