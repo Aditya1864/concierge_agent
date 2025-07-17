@@ -128,15 +128,6 @@ In this agent, conflicting or ambiguous information can arise when answers may d
      - May summarize both possibilities, and
      - Encourages the user to verify from official or updated sources.
 
-### Example Scenario
-**User query:** "What time does Lalbagh Botanical Garden close today?"
-
-- **PDF response:** "Closes at 6:00 PM"
-- **Web search result:** "Special summer hours until 7:30 PM"
-
-**Agent response:**  
-"Lalbagh typically closes at 6:00 PM according to the city guide, but current web results suggest it's open until 7:30 PM today. Please verify on the official website if you're visiting."
-
 ### Result
 This approach balances trustworthiness and accuracy by combining the stability of offline data with the flexibility of real-time search, while always aiming for transparency when conflicts arise.
 
