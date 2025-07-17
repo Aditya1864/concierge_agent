@@ -35,27 +35,59 @@ This project personalizes the assistant's behavior by detecting the user's perso
 
 ---
 
-## RAG vs. Web Search Decision Logic
+# RAG vs. Web Search: Decision Logic
 
-The agent intelligently chooses between using the **PDF knowledge base** (RAG) or **live web search** depending on the user's query.
+This section explains how the Bangalore Smart Agent decides whether to use its internal **PDF knowledge base (RAG)** or perform a **live web search** using external tools like DuckDuckGo.
 
-             +-------------------------------+
-             | User asks a question/input    |
-             +-------------------------------+
-                          |
-                          v
-      +--------------------------------------------+
-      | Is the question answerable using the       |
-      | PDF knowledge base ("The Ultimate Guide")? |
-      +--------------------------------------------+
-                 |                          |
-               Yes                         No
-                 |                          |
-                 v                          v
-  +----------------------------+     +----------------------------+
-  | Use PDF RAG to generate    |     | Use Web Search via         |
-  | answer using vector DB     |     | DuckDuckGoTools (live info)|
-  +----------------------------+     +----------------------------+
+## Overview
+
+The assistant uses two main sources of information:
+
+- **RAG (Retrieval-Augmented Generation)**: Uses a vector database built from "The Ultimate Bangalore Guide.pdf".
+- **Web Search Tool**: Uses DuckDuckGoTools for fresh, real-time information not covered in the PDF.
+
+The agent dynamically chooses between them based on the nature of the user’s query.
+
+## Decision Criteria
+
+1. **Use RAG (PDF knowledge base)** if:
+   - The query relates to static or factual information included in the PDF.
+   - Example topics:
+     - Landmark descriptions
+     - Local food joints
+     - Transportation basics
+     - Neighborhood overviews
+     - Cost of living details
+     - Kannada phrases
+     - Known infrastructure (e.g., Namma Metro lines)
+
+2. **Use Web Search** if:
+   - The query requires current, live, or dynamic data not stored in the PDF.
+   - Example topics:
+     - Entry timings, ticket prices, or status of landmarks
+     - Real-time metro route updates or traffic conditions
+     - Weather reports
+     - Ongoing events, gigs, or festivals
+     - Food delivery or app-based offers
+     - Recent infrastructure changes or rent hikes
+
+## Implementation Summary
+
+- The AGNO `Agent` is first given a PDF-based `KnowledgeBase` backed by a LanceDB vector store.
+- A DuckDuckGo web tool is also attached to the agent.
+- During inference, the agent decides:
+  - If the query matches vector-retrieved content with high relevance → use RAG.
+  - If not enough relevant content is found or if freshness is crucial → use web search.
+
+## Outcome
+
+This design ensures:
+- High-quality, grounded responses using local data.
+- Real-time responsiveness for time-sensitive queries.
+- Minimal hallucination due to fallback logic.
+- Flexibility to serve both static and dynamic user intents effectively.
+
+
 
 
 
