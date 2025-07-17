@@ -1,0 +1,38 @@
+(venv) D:\banza intership assignment>python agno_agent.py
+✅ Script started...
+🤖 Bangalore Smart City Agent is ready!
+(Type 'exit' to quit)
+
+Tell me a bit about yourself or your needs (so I can personalize):
+You: I am moving to Kormangala next month for a IT job. Give me some information about the rent, the neighbourh
+ood, etc.
+[Persona: resident]
+
+Agent: Koramangala is a popular neighborhood in Bangalore, known for its vibrant nightlife, numerous restaurants and pubs, and proximity to many IT companies.  Rent varies greatly depending on the type of accommodation and location within Koramangala. Expect to pay a premium for apartments closer to the main roads and IT hubs.  You can use websites like FlatMate.in to find shared apartments or independent houses.  Traffic can be heavy, especially during peak hours.  Be prepared for potential noise due to the lively atmosphere.
+
+
+You: i am visiting to check bangalore out before moving in. Give me a 2 day itenary for a fun week here
+[Persona changed to: tourist]
+
+Agent: Okay, here's a fun 2-day Bangalore itinerary for you:
+
+**Day 1: Exploring South Bangalore's Heritage and Flavors**
+
+* **Morning (9 AM):** Start your day at **Bangalore Palace**, a Tudor-style architectural marvel.  **(Tip:** Check timings and ticket prices using web search)**.
+* **Late Morning (11 AM):** Explore the lush greenery of **Lalbagh Botanical Garden**. Take a stroll, admire the flowers, and enjoy the peaceful atmosphere.
+* **Lunch (1 PM):** Indulge in a traditional South Indian thali at **MTR (Mavalli Tiffin Rooms)**, a legendary restaurant known for its authentic flavors.
+* **Afternoon (2:30 PM):** Immerse yourself in the vibrant atmosphere of **VV Puram Food Street** (Thindi Beedi). Sample various street food delights.
+* **Evening (5 PM):** Visit the **ISKCON Temple**, a beautiful temple dedicated to Lord Krishna.  **(Tip:** Check timings and dress code in a web search)**.
+* **Night (7 PM):** Enjoy dinner and drinks at **Toit Brewpub**, a popular microbrewery known for its craft beers and delicious food.
+
+**Day 2: North Bangalore's Parks, Culture and Nightlife**
+
+* **Morning (9 AM):** Begin your day with a visit to **Cubbon Park**, a sprawling green space in the heart of the city. Enjoy a leisurely walk or cycle ride.
+* **Late Morning (11 AM):** Explore **Commercial Street**, a bustling shopping street with a mix of traditional and modern stores. Remember those Kannada phrases!  (e.g., "Eshṭu bhavavu?")
+* **Lunch (1 PM):** Have lunch at **Vidyarthi Bhavan**, another iconic Bangalore eatery famous for its Masala Dosa. Be prepared for a potential queue!
+* **Afternoon (2:30 PM):** Visit the **Tipu Sultan's Summer Palace**, a historical landmark showcasing the architectural style of the era.
+* **Evening (5 PM):** Relax and enjoy the sunset at **Ulsoor Lake**. Consider a boat ride if you wish.
+* **Night (7 PM):** Head to **Church Street** for dinner and drinks. There are many restaurants and bars to choose from, catering to different tastes and budgets.  **(Tip:** Check for live music events via web search.)**  
+
+
+Remember to use the Namma Metro or app-based transportation like Ola or Uber to get around the city efficiently.  Have a fantastic trip

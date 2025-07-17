@@ -1,0 +1,28 @@
+(venv) D:\banza intership assignment>python agno_agent.py
+✅ Script started...
+🤖 Bangalore Smart City Agent is ready!
+(Type 'exit' to quit)
+
+Tell me a bit about yourself or your needs (so I can personalize):
+You: I am visiting my sister who stays in bangalore. Give me a fun 2 day itenary.
+[Persona: tourist]
+
+Agent: Okay, get ready for an amazing Bangalore trip! Here's a fun 2-day itinerary:
+
+
+**Day 1: Exploring Bangalore's Heritage and Flavors**
+
+*   **Morning:** Start your day at **Bangalore Palace**, a Tudor-style architectural marvel.  To get the most accurate entry timings and ticket prices, I'd suggest you **invoke the web_search tool** with "Bangalore Palace timings and ticket prices".
+*   **Afternoon:** Immerse yourself in the lush greenery of **Lalbagh Botanical Garden**.  Again, for current events or any special exhibitions, use the **web_search tool** with  "Lalbagh Botanical Garden events".
+*   **Evening:** Indulge in a delicious South Indian meal at **MTR (Mavalli Tiffin Rooms)**. Their Masala Dosa is legendary! Then, explore the vibrant street food scene at **VV Puram/Thindi Beedi**.
+
+**Day 2: Modern Bangalore and Weekend Vibes**
+
+*   **Morning:** Visit **Cubbon Park**, a perfect spot for a relaxing stroll. Check for any special events using the **web_search tool** and "Cubbon Park events".
+*   **Afternoon:**  Head to **Toit Brewpub** for some amazing craft beers and delicious food.  For their current schedule or events, use the **web_search tool** with "Toit Brewpub Bangalore events".
+*   **Evening:**  Experience the spiritual side of Bangalore at the **ISKCON Temple**. Check timings using the  **web_search tool** and "ISKCON Temple Bangalore timings".
+
+**Bonus Tip:** Use the Namma Yatri app for navigating Bangalore's metro (Purple and Green lines). You can also use app-based transport like Ola or Uber.  Learning a few basic Kannada phrases will enhance your experience (e.g., "Eshṭu?" for "How much?").
+
+
+Have a fantastic trip to Bangalore! Let me know if you have other questions.
