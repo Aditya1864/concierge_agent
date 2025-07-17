@@ -1,15 +1,40 @@
-###  How persona detection works in this project
+## How Persona Detection Works
 
-Persona detection in this project is handled using the **OpenRouter API** with **Anthropic’s Claude 3 Haiku** model. When the user sends a message, the input is sent to the model with a specific system prompt designed to classify the user into one of three categories:
+This project personalizes the assistant's behavior by detecting the user's persona: **`tourist`**, **`resident`**, or **`neutral`** (newcomer/unspecified). The detection process is fully automatic and updates dynamically during the conversation.
 
-- **`tourist`** – A person visiting Bangalore or asking about attractions, travel, etc.
-- **`resident`** – A person living in or moving to Bangalore, asking about local life, housing, commute, etc.
-- **`neutral`** – When the input is too generic or unclear to classify.
+---
 
-The model responds with a **single word** indicating the persona. This detected persona is then:
+### Step-by-Step Explanation
 
-- Used to select a **persona-specific system prompt** (tourist, resident, or neutral) from the code or `prompts.md`.
-- **Stored in memory** using AGNO's `MemoryEntry` so the agent can retain persona context throughout the conversation.
-- **Automatically updated** if future user inputs suggest a change in persona (dynamic persona switching).
+1. **User Input**
+   - The user is prompted to describe their needs or background.
+   - Example prompt:  
+     `"Tell me a bit about yourself or your needs (so I can personalize):"`
 
-This allows the agent to respond in the right tone and with relevant context for the user's role in Bangalore.
+2. **LLM-Based Persona Classification**
+   - The function `detect_persona(user_text)` sends the input to the `claude-3-haiku` model via the OpenRouter API.
+   - A system prompt instructs the model to respond with just one word:  
+     **`tourist`**, **`resident`**, or **`neutral`**.
+   - The API returns this label, which is parsed and validated.
+
+3. **Prompt Personalization**
+   - The label is passed to `get_prompt_for(persona)` which returns a predefined prompt tailored for that persona.
+   - This prompt is then used to configure the AGNO `Agent`, altering its tone, knowledge scope, and recommendation style.
+
+4. **Dynamic Persona Switching**
+   - Every new user query is re-evaluated.
+   - If the persona classification changes mid-conversation (e.g., a tourist starts asking about Bangalore rent), the agent updates its prompt and adapts accordingly.
+
+5. **Fallbacks and Robustness**
+   - If the classification fails or gives unexpected output, the system defaults to the `neutral` persona to maintain graceful degradation.
+
+---
+
+### Benefits
+
+- Enhances user experience through targeted answers.
+- Reduces irrelevant information.
+- Adapts in real-time to user behavior.
+- Enables use-case-specific knowledge retrieval and tool usage.
+
+
