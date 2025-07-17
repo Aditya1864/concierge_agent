@@ -37,7 +37,7 @@ This project personalizes the assistant's behavior by detecting the user's perso
 
 This section explains how the Bangalore Smart Agent decides whether to use its internal **PDF knowledge base (RAG)** or perform a **live web search** using external tools like DuckDuckGo.
 
-## Overview
+### Overview
 The assistant uses two main sources of information:
 
 - **RAG (Retrieval-Augmented Generation)**: Uses a vector database built from "The Ultimate Bangalore Guide.pdf".
@@ -45,7 +45,7 @@ The assistant uses two main sources of information:
 
 The agent dynamically chooses between them based on the nature of the user’s query.
 
-## Decision Criteria
+### Decision Criteria
 
 1. **Use RAG (PDF knowledge base)** if:
    - The query relates to static or factual information included in the PDF.
@@ -68,14 +68,14 @@ The agent dynamically chooses between them based on the nature of the user’s q
      - Food delivery or app-based offers
      - Recent infrastructure changes or rent hikes
 
-## Implementation Summary
+### Implementation Summary
 - The AGNO `Agent` is first given a PDF-based `KnowledgeBase` backed by a LanceDB vector store.
 - A DuckDuckGo web tool is also attached to the agent.
 - During inference, the agent decides:
   - If the query matches vector-retrieved content with high relevance → use RAG.
   - If not enough relevant content is found or if freshness is crucial → use web search.
 
-## Outcome
+### Outcome
 This design ensures:
 - High-quality, grounded responses using local data.
 - Real-time responsiveness for time-sensitive queries.
@@ -104,6 +104,42 @@ Instead of using traditional keyword-based classification, this project introduc
 
 ### Result
 This feature improves the assistant’s contextual understanding, personalization, and response accuracy. It allows for richer and more useful conversations compared to keyword-based approaches.
+
+---
+
+# Handling Conflicting Information
+In this agent, conflicting or ambiguous information can arise when answers may differ between the static knowledge base (RAG) and real-time web data. To address this, the agent uses a layered and fallback-based strategy.
+
+### Strategy Overview
+1. **Source Priority Based on Query Type**
+   - If the query involves timeless, factual, or structured content (e.g., neighborhood overviews, transport options, landmark descriptions), the agent prioritizes the **PDF knowledge base**.
+   - If the query requires real-time or volatile data (e.g., current metro timings, event schedules, traffic status), the agent defers to **web search results**.
+
+2. **Explicit Conflict Awareness**
+   - If conflicting results are detected (for example, the guide says Cubbon Park closes at 6 PM, but the web shows 7 PM), the agent will prefer the **more recent source**, i.e., the web, and may include a clarification like:
+     > "The guide lists the closing time as 6 PM, but recent online data suggests it's open till 7 PM."
+
+3. **Transparent Justification**
+   - The agent is encouraged (via system prompt) to state the source of information when a conflict is possible, so users understand which data is being relied upon.
+
+4. **Fallback Mechanism**
+   - If the knowledge base lacks information and the web search also fails or gives contradictory results, the agent:
+     - Defaults to stating uncertainty,
+     - May summarize both possibilities, and
+     - Encourages the user to verify from official or updated sources.
+
+### Example Scenario
+**User query:** "What time does Lalbagh Botanical Garden close today?"
+
+- **PDF response:** "Closes at 6:00 PM"
+- **Web search result:** "Special summer hours until 7:30 PM"
+
+**Agent response:**  
+"Lalbagh typically closes at 6:00 PM according to the city guide, but current web results suggest it's open until 7:30 PM today. Please verify on the official website if you're visiting."
+
+### Result
+This approach balances trustworthiness and accuracy by combining the stability of offline data with the flexibility of real-time search, while always aiming for transparency when conflicts arise.
+
 
 
 
