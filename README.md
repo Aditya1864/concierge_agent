@@ -82,6 +82,30 @@ This design ensures:
 - Minimal hallucination due to fallback logic.
 - Flexibility to serve both static and dynamic user intents effectively.
 
+---
+
+# Creative Features Added
+
+### Intelligent Persona Detection via LLM
+Instead of using traditional keyword-based classification, this project introduces a more robust and accurate persona detection mechanism by leveraging a language model.
+
+### What’s New
+- LLM-Based Classification  
+  The agent sends the user's input to a lightweight LLM (`claude-3-haiku`) via OpenRouter to determine the user's persona — `tourist`, `resident`, or `neutral`.
+
+- Why It’s Better Than Keyword Matching  
+  Unlike basic keyword detection, which is often brittle and unreliable, the LLM understands natural language context. This enables:
+  - Accurate handling of complex or ambiguous descriptions.
+  - Adaptability to conversational phrasing, slang, and indirect queries.
+  - Seamless persona switching mid-conversation if the user's context changes.
+
+- Dynamic Prompt Injection  
+  Once the persona is identified, a tailored system prompt is injected into the agent. This alters the assistant’s tone, content scope, and behavior to match the persona in real time.
+
+### Result
+This feature improves the assistant’s contextual understanding, personalization, and response accuracy. It allows for richer and more useful conversations compared to keyword-based approaches.
+
+
 
 
 
