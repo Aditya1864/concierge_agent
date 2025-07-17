@@ -1,5 +1,4 @@
-## How Persona Detection Works in this Project?
-
+# How Persona Detection Works in this Project?
 This project personalizes the assistant's behavior by detecting the user's persona: **`tourist`**, **`resident`**, or **`neutral`** (newcomer/unspecified). The detection process is fully automatic and updates dynamically during the conversation.
 
 ### Step-by-Step Explanation
@@ -27,7 +26,6 @@ This project personalizes the assistant's behavior by detecting the user's perso
    - If the classification fails or gives unexpected output, the system defaults to the `neutral` persona to maintain graceful degradation.
 
 ### Benefits
-
 - Enhances user experience through targeted answers.
 - Reduces irrelevant information.
 - Adapts in real-time to user behavior.
@@ -40,7 +38,6 @@ This project personalizes the assistant's behavior by detecting the user's perso
 This section explains how the Bangalore Smart Agent decides whether to use its internal **PDF knowledge base (RAG)** or perform a **live web search** using external tools like DuckDuckGo.
 
 ## Overview
-
 The assistant uses two main sources of information:
 
 - **RAG (Retrieval-Augmented Generation)**: Uses a vector database built from "The Ultimate Bangalore Guide.pdf".
@@ -72,7 +69,6 @@ The agent dynamically chooses between them based on the nature of the user’s q
      - Recent infrastructure changes or rent hikes
 
 ## Implementation Summary
-
 - The AGNO `Agent` is first given a PDF-based `KnowledgeBase` backed by a LanceDB vector store.
 - A DuckDuckGo web tool is also attached to the agent.
 - During inference, the agent decides:
@@ -80,7 +76,6 @@ The agent dynamically chooses between them based on the nature of the user’s q
   - If not enough relevant content is found or if freshness is crucial → use web search.
 
 ## Outcome
-
 This design ensures:
 - High-quality, grounded responses using local data.
 - Real-time responsiveness for time-sensitive queries.
