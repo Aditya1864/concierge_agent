@@ -1,0 +1,30 @@
+✅ Script started...
+🤖 Bangalore Smart City Agent is ready!
+(Type 'exit' to quit)
+
+Tell me a bit about yourself or your needs (so I can personalize):
+You: I am moving to Electronic city next month. Give me some detailed information about that area that i need t
+o be aware.
+[Persona: resident]
+
+Agent: Electronic City is a bustling area in Bangalore, known for its numerous IT companies and vibrant atmosphere.  Here's some information to help you prepare for your move:
+
+**Neighborhood & Living:** Electronic City offers a mix of residential options, from affordable apartments to luxury villas.  Expect a sizable tech-worker population.  While it's convenient for those working in the area, it can feel quite isolated from other parts of Bangalore.
+
+**Living Costs & Utilities:**  Rent varies considerably based on the type of accommodation and location within Electronic City. Utilities like BESCOM (electricity) and ACT Fibernet are readily available; expect typical Bangalore pricing.  Check FlatMate.in for roommate options if you're looking to share accommodation.
+
+**Commuting:**  Electronic City's location can be challenging for commuting to other parts of Bangalore.  The Namma Metro is expanding, but currently, reliance on autos or your own vehicle is common, leading to potential traffic issues, particularly during peak hours. Namma Yatri app helps to plan your commute better, but traffic can be unpredictable near Silk Board junction.
+
+**Food & Nightlife:** While Electronic City has an array of eateries catering to the tech crowd, its nightlife scene is relatively subdued compared to areas like Indiranagar or Koramangala.  You'll find plenty of options for daily meals, but may need to travel for a more active night out.
+
+**Challenges:** The primary challenge of living in Electronic City is its notorious traffic congestion, especially during peak hours.  Be prepared for potential delays while commuting.  Also, being a relatively self-contained area, you might find it less connected to the cultural pulse of other parts of Bangalore.
+
+To help me provide further tailored advice, could you tell me:
+
+1. Your budget for rent?
+2. Your preferred mode of commuting (car, bike, public transport)?
+3. Your work location within Electronic City (or travel destination if outside)?
+4.  Your priorities regarding nightlife and social activities (active, casual, or not a big concern)?
+
+
+This will allow me to suggest specific localities, and accommodation choices better suited to your needs.

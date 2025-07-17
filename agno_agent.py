@@ -52,13 +52,7 @@ kb = PDFKnowledgeBase(
 # Add web search tool
 tools = [DuckDuckGoTools()]
 
-# Create AGNO agent
-agent = Agent(
-    model=llm,
-    knowledge=kb,  # ✅ This connects R (retrieval) to G (generation)
-    tools=tools,
-    search_knowledge=True
-)
+
 
 # Run chat loop
 if __name__ == "__main__":
@@ -67,6 +61,26 @@ if __name__ == "__main__":
     user_id = "intern_01"
     session_id = "banza_test_1"
 
+    # Initial input and persona
+    first_input = input("Tell me a bit about yourself or your needs (so I can personalize):\nYou: ")
+    persona = detect_persona(first_input)
+    prompt = get_prompt_for(persona)
+    print(f"[Persona: {persona}]")
+
+    agent = Agent(
+        model=llm,
+        knowledge=kb,
+        tools=tools,
+        num_history_runs=10,  # Adjust as needed for memory depth
+        description=prompt,
+        markdown=True,
+    )
+    agent.instructions = prompt
+
+    # First response
+    response = agent.run(first_input)
+    print(f"\nAgent: {response.content}\n")
+
     while True:
         user_input = input("You: ")
 
@@ -74,12 +88,20 @@ if __name__ == "__main__":
             print("👋 Goodbye!")
             break
 
-        persona = detect_persona(user_input)
-        prompt = get_prompt_for(persona)
+        # Detect persona for this query
+        detected_persona = detect_persona(user_input)
+        if detected_persona != persona:
+            persona = detected_persona
+            prompt = get_prompt_for(persona)
+            agent.instructions = prompt
+            print(f"[Persona changed to: {persona}]")
 
-        agent.instructions = prompt
-
-        print(f"[Persona: {persona}]")
+        # The agent will automatically use chat memory (last N turns)
         response = agent.run(user_input)
         print(f"\nAgent: {response.content}\n")
 
+
+
+
+
+         
