@@ -1,8 +1,6 @@
-## How Persona Detection Works
+## How Persona Detection Works in this Project?
 
 This project personalizes the assistant's behavior by detecting the user's persona: **`tourist`**, **`resident`**, or **`neutral`** (newcomer/unspecified). The detection process is fully automatic and updates dynamically during the conversation.
-
----
 
 ### Step-by-Step Explanation
 
@@ -28,13 +26,38 @@ This project personalizes the assistant's behavior by detecting the user's perso
 5. **Fallbacks and Robustness**
    - If the classification fails or gives unexpected output, the system defaults to the `neutral` persona to maintain graceful degradation.
 
----
-
 ### Benefits
 
 - Enhances user experience through targeted answers.
 - Reduces irrelevant information.
 - Adapts in real-time to user behavior.
 - Enables use-case-specific knowledge retrieval and tool usage.
+
+---
+
+## RAG vs. Web Search Decision Logic
+
+The agent intelligently chooses between using the **PDF knowledge base** (RAG) or **live web search** depending on the user's query.
+
+             +-------------------------------+
+             | User asks a question/input    |
+             +-------------------------------+
+                          |
+                          v
+      +--------------------------------------------+
+      | Is the question answerable using the       |
+      | PDF knowledge base ("The Ultimate Guide")? |
+      +--------------------------------------------+
+                 |                          |
+               Yes                         No
+                 |                          |
+                 v                          v
+  +----------------------------+     +----------------------------+
+  | Use PDF RAG to generate    |     | Use Web Search via         |
+  | answer using vector DB     |     | DuckDuckGoTools (live info)|
+  +----------------------------+     +----------------------------+
+
+
+
 
 
