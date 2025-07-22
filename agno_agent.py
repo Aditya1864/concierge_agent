@@ -21,7 +21,7 @@ os.environ["OPENAI_BASE_URL"] = os.getenv("OPENAI_BASE_URL")
 
 # Initialize model (Gemini Flash or GPT-4.1 mini)
 llm = OpenAIChat(
-    id="google/gemini-flash-1.5",
+    id="anthropic/claude-3-haiku",
     api_key=os.getenv("OPENAI_API_KEY")
 )
 
